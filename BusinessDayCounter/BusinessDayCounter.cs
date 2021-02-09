@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessDayCounter.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,9 +33,50 @@ namespace BusinessDayCounter
             
             for (var currentDate = firstDate.AddDays(1); currentDate < secondDate; currentDate = currentDate.AddDays(1))
             {
-                if (IsWeekday(currentDate) && !publicHolidays.Contains(currentDate))
+                if (IsWeekday(currentDate) && !publicHolidays.Any(x => x.Date == currentDate.Date))
                 {
                     countOfBusinessDays++;
+                }
+            }
+
+            return countOfBusinessDays;
+        }
+
+
+        public int BusinessDaysBetweenTwoDates(DateTime firstDate, DateTime secondDate, IList<IPublicHolidayDefinition> publicHolidays)
+        {
+            publicHolidays = publicHolidays ?? new List<IPublicHolidayDefinition>();
+
+            var countOfBusinessDays = 0;
+            var countOfDeferredPublicHolidays = 0;
+
+            for (var currentDate = firstDate.AddDays(1); currentDate < secondDate; currentDate = currentDate.AddDays(1))
+            {
+                var matchingPublicHoliday = publicHolidays.FirstOrDefault(x => x.IsPublicHoliday(currentDate));
+
+                if (IsWeekday(currentDate))
+                {
+                    if (matchingPublicHoliday == null)
+                    {
+                        if (countOfDeferredPublicHolidays > 0)
+                        {
+                            // Consider currentDate as a deferred public holiday
+                            countOfDeferredPublicHolidays--;
+                        }
+                        else
+                        {
+                            // Normal business day
+                            countOfBusinessDays++;
+                        }
+                    }
+                }
+                else
+                {
+                    // If holiday happens during a weekend
+                    if (matchingPublicHoliday != null && matchingPublicHoliday.AllowPublicHolidayToBeDeferred)
+                    {
+                        countOfDeferredPublicHolidays++;
+                    }
                 }
             }
 
@@ -45,6 +87,5 @@ namespace BusinessDayCounter
         {
             return !WeekendDays.Contains(date.DayOfWeek);
         }
-
     }
 }

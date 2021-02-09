@@ -49,5 +49,21 @@ namespace BusinessDayCounter.Tests
             actualOutput.Should().Be(expectedDays);
         }
 
+        //[TestCase("2013-10-07", "2013-10-09", 1)]
+        //[TestCase("2013-12-24", "2013-12-27", 0)]
+        //[TestCase("2013-10-07", "2014-01-01", 59)]
+        //public void GivenDateRange_ReturnCountOfBusinessDays(string publicHolidayDates, string firstDateStr, string secondDateStr, int expectedDays)
+        //{
+        //    // Arrange
+        //    var publicHolidays = publicHolidayDates.Split(",").Select(DateTime.Parse).ToList();
+        //    var firstDate = DateTime.Parse(firstDateStr);
+        //    var secondDate = DateTime.Parse(secondDateStr);
+
+        //    // Act
+        //    var actualOutput = _sut.BusinessDaysBetweenTwoDates(firstDate, secondDate, publicHolidays);
+
+        //    // Assert
+        //    actualOutput.Should().Be(expectedDays);
+        //}
     }
 }
