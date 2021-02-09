@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessDayCounter", "BusinessDayCounter.csproj", "{F29A3CDC-AE70-46EC-83D6-93668E673A0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessDayCounter.Tests", "..\BusinessDayCounter.Tests\BusinessDayCounter.Tests.csproj", "{9480A9CE-4579-496E-92E7-94A873302B33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F29A3CDC-AE70-46EC-83D6-93668E673A0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F29A3CDC-AE70-46EC-83D6-93668E673A0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F29A3CDC-AE70-46EC-83D6-93668E673A0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F29A3CDC-AE70-46EC-83D6-93668E673A0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9480A9CE-4579-496E-92E7-94A873302B33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9480A9CE-4579-496E-92E7-94A873302B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9480A9CE-4579-496E-92E7-94A873302B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9480A9CE-4579-496E-92E7-94A873302B33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9FD913B-54EB-4978-B573-25C048DEC340}
+	EndGlobalSection
+EndGlobal
