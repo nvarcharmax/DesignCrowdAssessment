@@ -10,8 +10,6 @@ namespace BusinessDayCounter.Models
         public DayOfWeek DayOfWeek { get; set; }
         public int Month { get; set; }
 
-        public bool AllowPublicHolidayToBeDeferred => false;
-
         public bool IsPublicHoliday(DateTime date)
         {
             return date.DayOfWeek == DayOfWeek && 

@@ -52,11 +52,11 @@ namespace BusinessDayCounter
 
             for (var currentDate = firstDate.AddDays(1); currentDate < secondDate; currentDate = currentDate.AddDays(1))
             {
-                var matchingPublicHoliday = publicHolidays.FirstOrDefault(x => x.IsPublicHoliday(currentDate));
+                var isPublicHoliday = publicHolidays.Any(x => x.IsPublicHoliday(currentDate));
 
                 if (IsWeekday(currentDate))
                 {
-                    if (matchingPublicHoliday == null)
+                    if (!isPublicHoliday)
                     {
                         if (countOfDeferredPublicHolidays > 0)
                         {
@@ -73,7 +73,7 @@ namespace BusinessDayCounter
                 else
                 {
                     // If holiday happens during a weekend
-                    if (matchingPublicHoliday != null && matchingPublicHoliday.AllowPublicHolidayToBeDeferred)
+                    if (isPublicHoliday)
                     {
                         countOfDeferredPublicHolidays++;
                     }

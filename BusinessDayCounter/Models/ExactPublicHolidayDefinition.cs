@@ -6,8 +6,6 @@ namespace BusinessDayCounter.Models
     {
         public DateTime Date { get; set; }
 
-        public bool AllowPublicHolidayToBeDeferred => true;
-
         public bool IsPublicHoliday(DateTime date)
         {
             return (Date.Date == date.Date);
